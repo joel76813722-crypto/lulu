@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08091c">
+<title>Mi Universo Para Ti ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070817;--pink:#ff8fca;--lav:#c8b7ff;--ice:#b7e8ff;--text:#f8f3ff;--muted:#b9b5d0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 50% 45%,#211641 0%,#10102c 38%,#070817 76%)}
+#stars{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(18px,5vw,72px);background:linear-gradient(180deg,rgba(7,8,23,.82),transparent);backdrop-filter:blur(8px)}
+.brand{font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:#fff;display:flex;gap:10px;align-items:center}.brand-mark{color:var(--pink);font-size:1.2rem}
+nav{display:flex;gap:25px}nav a{color:#d8d2ec;text-decoration:none;font-size:.76rem;letter-spacing:.08em;transition:.25s}nav a:hover{color:var(--pink)}
+.music-btn,.outline-btn{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:11px 16px;color:white;background:rgba(255,255,255,.06);font:inherit;font-size:.75rem;cursor:pointer;backdrop-filter:blur(10px);transition:.25s}.music-btn:hover,.outline-btn:hover{border-color:var(--pink);background:rgba(255,143,202,.12)}
+.hero{min-height:100svh;position:relative;display:grid;grid-template-columns:minmax(260px,.85fr) minmax(380px,1.15fr);align-items:center;padding:110px clamp(20px,7vw,110px) 65px;gap:2vw;overflow:hidden}
+.hero-copy{position:relative;z-index:4;max-width:570px}.eyebrow{display:flex;align-items:center;gap:12px;color:var(--pink);font-size:.7rem;text-transform:uppercase;letter-spacing:.27em;margin-bottom:25px}.eyebrow:before{content:"";width:34px;height:1px;background:var(--pink)}
+h1{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(3.6rem,7.3vw,7.5rem);line-height:.88;letter-spacing:-.045em;margin:0 0 28px}h1 em{font-weight:500;color:var(--pink);display:block;font-style:italic;text-shadow:0 0 38px #ff8fca44}
+.hero-copy p{font-size:clamp(.94rem,1.15vw,1.08rem);line-height:1.9;color:#c8c2df;max-width:430px;margin:0 0 32px}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.primary-btn{border:0;border-radius:999px;padding:15px 23px;color:#190d25;background:linear-gradient(100deg,#ffc0e2,#cbbdff);font:600 .78rem Manrope,sans-serif;letter-spacing:.03em;cursor:pointer;box-shadow:0 10px 35px #ff8fca24;transition:transform .25s}.primary-btn:hover{transform:translateY(-3px)}
+.hero-note{margin-top:40px;display:flex;align-items:center;gap:13px;color:#938ba9;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}.hero-note span{width:28px;height:1px;background:#6e628a}
+.universe-wrap{height:min(76vh,760px);min-height:420px;position:relative;perspective:1100px;display:grid;place-items:center;isolation:isolate}
+.universe-glow{position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#a43d9b20,transparent 67%);filter:blur(20px)}
+#universe{width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}#universe:active{cursor:grabbing}
+.orbit-hint{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:#9e96ba;white-space:nowrap;display:flex;align-items:center;gap:9px}.orbit-hint:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:.62rem;letter-spacing:.22em;color:#807994;text-transform:uppercase;display:flex;align-items:center;gap:12px}.scroll-cue:after{content:"↓";font-size:1rem;color:var(--pink)}
+section{padding:115px clamp(20px,7vw,110px);position:relative}.section-head{text-align:center;max-width:650px;margin:0 auto 55px}.kicker{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--pink)}h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:400;line-height:.98;margin:16px 0 20px}h2 em{color:var(--lav);font-style:italic}.section-head p{color:var(--muted);line-height:1.8;font-size:.93rem}
+.memories{background:linear-gradient(180deg,transparent,rgba(31,17,54,.46),transparent)}.photo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;max-width:1300px;margin:auto}
+.photo-card{position:relative;min-width:0;cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:170px 170px 18px 18px;overflow:hidden;aspect-ratio:3/4;background:linear-gradient(155deg,#34254f,#15142d 60%,#351d43);transition:transform .4s,border-color .4s;isolation:isolate}.photo-card:nth-child(even){transform:translateY(28px)}.photo-card:hover{transform:translateY(-8px);border-color:#ff9dceaa}.photo-card:nth-child(even):hover{transform:translateY(15px)}
+.photo-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .7s;z-index:-2}.photo-card:hover img{transform:scale(1.06)}.photo-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(9,7,22,.08) 45%,rgba(9,7,22,.92));z-index:-1}
+.photo-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#e9b8e7;background:radial-gradient(circle at 50% 35%,#a75aa94b,transparent 38%),linear-gradient(150deg,#292448,#111327 70%,#4b2451)}.photo-placeholder svg{width:54px;opacity:.85}
+.photo-info{position:absolute;bottom:0;padding:22px 17px;width:100%}.photo-number{font-size:.61rem;letter-spacing:.2em;color:#f4a9d6}.photo-info h3{font:500 1.55rem "Cormorant Garamond",serif;margin:8px 0 5px}.photo-info p{font-size:.68rem;line-height:1.6;color:#d0c8df;margin:0}
+.photo-tip{text-align:center;color:#8f88a8;font-size:.7rem;letter-spacing:.08em;margin:56px auto 0}
+.letter-section{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(35px,8vw,120px);align-items:center;max-width:1200px;margin:auto}.letter-art{position:relative;aspect-ratio:1;max-width:470px;width:100%;margin:auto;display:grid;place-items:center}.letter-orbit{position:absolute;inset:8%;border:1px solid #d7a8ff55;border-radius:50%;transform:rotateX(65deg) rotateZ(-22deg);box-shadow:0 0 45px #c18cff12}.letter-orbit.two{inset:20%;transform:rotateX(70deg) rotateZ(40deg);border-color:#ff9ec955}.letter-heart{font-size:clamp(6rem,15vw,12rem);color:#ff9dce;filter:drop-shadow(0 0 22px #ff4f9d) drop-shadow(0 0 60px #d13ca5aa);animation:heartbeat 3.2s ease-in-out infinite}.letter-spark{position:absolute;color:#d8c4ff;animation:twinkle 3s ease-in-out infinite}.letter-spark.s1{top:15%;left:23%}.letter-spark.s2{right:16%;top:32%;animation-delay:1s}.letter-spark.s3{bottom:17%;left:28%;animation-delay:1.8s}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}@keyframes twinkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+.letter-copy .kicker{display:block}.letter-copy h2{margin-top:17px}.letter-copy p{color:#c2bad9;line-height:1.95;font-size:.95rem}.signature{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--pink);font-size:1.8rem;margin-top:28px}
+.final-section{text-align:center;padding-top:95px;padding-bottom:120px;background:radial-gradient(ellipse at 50% 70%,#61285a26,transparent 60%)}.final-section p{max-width:570px;margin:0 auto 28px;color:#c5bddc;line-height:1.9}.final-heart{font-size:1.4rem;color:var(--pink);margin-bottom:18px;filter:drop-shadow(0 0 15px #ff8fca)}
+footer{border-top:1px solid #ffffff10;padding:24px 20px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#77718f;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
+.modal{position:fixed;inset:0;background:#050511e8;backdrop-filter:blur(18px);z-index:50;display:none;place-items:center;padding:22px}.modal.open{display:grid}.modal-card{width:min(850px,100%);display:grid;grid-template-columns:1fr 1fr;background:#131127;border:1px solid #ffffff20;border-radius:22px;overflow:hidden;box-shadow:0 25px 100px #0008;position:relative}.modal-image{min-height:350px;background:linear-gradient(140deg,#38264f,#15142c);display:grid;place-items:center}.modal-image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.modal-copy{padding:clamp(24px,5vw,50px);align-self:center}.modal-copy .kicker{font-size:.65rem}.modal-copy h3{font:500 2.6rem "Cormorant Garamond",serif;margin:15px 0}.modal-copy p{color:#c6bedb;line-height:1.8;font-size:.9rem}.close-modal{position:absolute;right:14px;top:14px;z-index:2;border:1px solid #ffffff2c;background:#100d25cc;color:white;border-radius:50%;width:38px;height:38px;font-size:1.2rem;cursor:pointer}
+#musicStatus{position:fixed;bottom:18px;right:18px;z-index:25;font-size:.68rem;color:#cfc6e8;background:#100e25d9;border:1px solid #ffffff18;border-radius:999px;padding:10px 14px;backdrop-filter:blur(12px);display:none}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:130px;text-align:center;gap:0}.hero-copy{margin:auto}.eyebrow{justify-content:center}.hero-copy p{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-note{justify-content:center;margin-top:25px}.universe-wrap{height:58vh;min-height:360px;margin-top:-5px}.scroll-cue{display:none}.photo-grid{grid-template-columns:repeat(3,1fr);gap:13px}.photo-card:nth-child(even){transform:none}.photo-card:nth-child(even):hover{transform:translateY(-8px)}.letter-section{grid-template-columns:1fr}.letter-art{max-width:330px;order:2}.letter-copy{text-align:center;order:1}.letter-copy h2{max-width:600px;margin-left:auto;margin-right:auto}}
+@media(max-width:560px){header{padding:15px 17px}.brand{font-size:.62rem;letter-spacing:.14em}nav{display:none}.music-btn{padding:9px 12px;font-size:.68rem}.hero{padding:115px 18px 45px}h1{font-size:clamp(3.5rem,16vw,5.6rem)}.universe-wrap{height:48vh;min-height:300px;margin:0 -18px}.orbit-hint{font-size:.56rem;letter-spacing:.12em;bottom:0}section{padding:82px 18px}.section-head{margin-bottom:35px}.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.photo-card{border-radius:120px 120px 14px 14px}.photo-card:last-child{grid-column:1/-1;width:calc(50% - 6px);justify-self:center}.photo-info{padding:16px 12px}.photo-info h3{font-size:1.35rem}.photo-info p{font-size:.63rem}.photo-tip{margin-top:35px;line-height:1.7}.modal-card{grid-template-columns:1fr;max-width:430px;max-height:90svh;overflow:auto}.modal-image{min-height:230px;position:relative}.modal-copy{padding:25px}.modal-copy h3{font-size:2rem}.letter-art{max-width:270px}footer{justify-content:center;text-align:center}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas><div class="noise"></div>
+<header>
+  <a class="brand" href="#inicio" style="text-decoration:none"><span class="brand-mark">✦</span> Mi universo para ti</a>
+  <nav><a href="#universo">EL UNIVERSO</a><a href="#recuerdos">RECUERDOS</a><a href="#carta">MI CARTA</a></nav>
+  <button class="music-btn" id="musicToggle" aria-label="Reproducir música">♫ <span id="musicLabel">Activar música</span></button>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <div class="eyebrow">Un lugar entre infinitos</div>
+    <h1>En todo el <em>universo,</em> eres tú.</h1>
+    <p>Si pudiera regalarte algo más grande que las estrellas, te regalaría un universo entero… para que descubras que, entre millones de mundos, mi favorito siempre será aquel donde estás tú.</p>
+    <div class="actions"><button class="primary-btn" id="exploreBtn">Explorar nuestro universo <span aria-hidden="true">↗</span></button><a class="outline-btn" href="#recuerdos" style="text-decoration:none">Nuestros recuerdos</a></div>
+    <div class="hero-note"><span></span> Hecho de estrellas, recuerdos y cariño</div>
+  </div>
+  <div class="universe-wrap" id="universo">
+    <div class="universe-glow"></div><canvas id="universe" aria-label="Universo tridimensional interactivo"></canvas>
+    <div class="orbit-hint">Arrastra para girar · toca un planeta</div>
+  </div>
+  <div class="scroll-cue">Desliza para descubrir</div>
+</section>
+<section class="memories" id="recuerdos">
+  <div class="section-head"><span class="kicker">Constelación de momentos</span><h2>Cinco mundos.<br><em>Mil recuerdos.</em></h2><p>Cada fotografía guarda un pequeño universo. Selecciona un mundo para abrir su recuerdo y personaliza las imágenes con tus propias fotos.</p></div>
+  <div class="photo-grid" id="photoGrid"></div>
+  <p class="photo-tip">✧ Selecciona cada mundo para descubrir su recuerdo ✧</p>
+</section>
+<section id="carta">
+  <div class="letter-section">
+    <div class="letter-art" aria-hidden="true"><div class="letter-orbit"></div><div class="letter-orbit two"></div><span class="letter-spark s1">✦</span><span class="letter-spark s2">✧</span><span class="letter-spark s3">✦</span><div class="letter-heart">♥</div></div>
+    <div class="letter-copy"><span class="kicker">Un mensaje desde mi galaxia</span><h2>Mi lugar favorito<br><em>es contigo.</em></h2><p>No hacen falta millones de estrellas para iluminar mi mundo. A veces basta una mirada, una sonrisa o un instante que quisiera guardar para siempre. Por eso imaginé este pequeño universo: para convertir en mundos todas esas cosas que las palabras no siempre alcanzan a explicar.</p><p>Y si alguna vez te pierdes entre tantas estrellas, recuerda esto: hay un corazón que eligió hacerte un lugar en su infinito.</p><div class="signature">Con cariño, para ti. ♡</div></div>
+  </div>
+</section>
+<section class="final-section"><div class="final-heart">✦ &nbsp; ♥ &nbsp; ✦</div><span class="kicker">Hasta el infinito</span><h2>Este universo<br><em>es para ti.</em></h2><p>De todos los lugares posibles, de todos los caminos y de todas las estrellas… qué bonito que existas en el mismo universo que yo.</p><button class="primary-btn" id="replayBtn">Volver a recorrerlo ↗</button></section>
+</main>
+<footer><span>✦ Un universo hecho especialmente para ti</span><span>Con cariño · Siempre bajo las mismas estrellas</span></footer>
+<div class="modal" id="memoryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card"><button class="close-modal" id="closeModal" aria-label="Cerrar">×</button><div class="modal-image" id="modalImage"></div><div class="modal-copy"><span class="kicker" id="modalKicker">RECUERDO 01</span><h3 id="modalTitle">Nuestro primer mundo</h3><p id="modalText"></p><button class="outline-btn" id="modalClose2">Volver al universo</button></div></div>
+</div>
+<div id="musicStatus">♫ La música acompaña tu viaje</div>
+<audio id="bgMusic" loop preload="none"></audio>
+<script>
+/* PERSONALIZA: cambia los nombres, mensajes y archivos de imagen dentro de esta lista. */
+const memories = [
+ {name:"Nuestro comienzo", short:"Todo universo tiene un primer instante.", text:"Aquí empieza nuestra historia: un pequeño instante que merece brillar como una estrella y quedarse para siempre en la memoria.", photo:"fotos/foto1.jpg", color:"#ff8fca"},
+ {name:"Tu sonrisa", short:"La luz que encuentra mi galaxia.", text:"Hay luces que viajan millones de años para llegar hasta nosotros. Y luego está tu sonrisa, que encuentra la forma de iluminarlo todo.", photo:"fotos/foto2.jpg", color:"#c9b4ff"},
+ {name:"Un momento eterno", short:"Lo sencillo se vuelve extraordinario.", text:"No todos los recuerdos necesitan ser enormes. Algunos segundos se vuelven infinitos simplemente porque los vivimos con alguien especial.", photo:"fotos/foto3.jpg", color:"#a9e7ff"},
+ {name:"Nuestro pequeño mundo", short:"Un lugar que se siente como hogar.", text:"Entre tantos caminos posibles, existen personas que hacen que cualquier lugar se sienta como hogar. Este mundo guarda un poquito de esa magia.", photo:"fotos/foto4.jpg", color:"#ffd4a3"},
+ {name:"Lo que aún soñamos", short:"Que nunca nos falten estrellas.", text:"Todavía quedan mundos por descubrir, cielos por mirar y recuerdos por crear. Que este sea solo el comienzo de todo lo bonito que está por venir.", photo:"fotos/foto5.jpg", color:"#e5a9ff"}
+];
+const photoGrid=document.getElementById('photoGrid');
+memories.forEach((m,i)=>{
+ const card=document.createElement('button');card.className='photo-card';card.type='button';card.setAttribute('aria-label','Abrir recuerdo: '+m.name);
+ card.innerHTML=`<div class="photo-placeholder"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="32" cy="32" r="22"/><path d="M10 32h44M32 10c8 8 8 36 0 44M32 10c-8 8-8 36 0 44M15 20h34M15 44h34"/></svg></div><img src="${m.photo}" alt="${m.name}" loading="lazy" onerror="this.style.display='none'"><div class="photo-info"><span class="photo-number">MUNDO 0${i+1}</span><h3>${m.name}</h3><p>${m.short}</p></div>`;
+ card.addEventListener('click',()=>openMemory(i));photoGrid.appendChild(card);
+});
+const modal=document.getElementById('memoryModal');
+function openMemory(i){const m=memories[i];document.getElementById('modalKicker').textContent='RECUERDO 0'+(i+1);document.getElementById('modalTitle').textContent=m.name;document.getElementById('modalText').textContent=m.text;const box=document.getElementById('modalImage');box.innerHTML='';const img=document.createElement('img');img.src=m.photo;img.alt=m.name;img.onerror=()=>{img.remove();box.style.background=`radial-gradient(circle at 50% 40%, ${m.color}66, transparent 60%),linear-gradient(140deg,#38264f,#15142c)`};box.appendChild(img);modal.classList.add('open');document.body.style.overflow='hidden'}
+function closeMemory(){modal.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('closeModal').onclick=closeMemory;document.getElementById('modalClose2').onclick=closeMemory;modal.addEventListener('click',e=>{if(e.target===modal)closeMemory()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMemory()});
+document.getElementById('exploreBtn').onclick=()=>document.getElementById('universo').scrollIntoView({behavior:'smooth',block:'center'});
+document.getElementById('replayBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+/* Fondo de estrellas: canvas ligero, sin librerías externas. */
+const starCanvas=document.getElementById('stars'), sctx=starCanvas.getContext('2d');let stars=[],sw=0,sh=0;
+function resizeStars(){const dpr=Math.min(window.devicePixelRatio||1,2);sw=innerWidth;sh=innerHeight;starCanvas.width=sw*dpr;starCanvas.height=sh*dpr;starCanvas.style.width=sw+'px';starCanvas.style.height=sh+'px';sctx.setTransform(dpr,0,0,dpr,0,0);stars=Array.from({length:Math.min(220,Math.floor(sw*sh/5500))},()=>({x:Math.random()*sw,y:Math.random()*sh,r:Math.random()*1.25+.25,a:Math.random()*.65+.12,p:Math.random()*6.28,s:Math.random()*.012+.003}))}
+function drawStars(t=0){sctx.clearRect(0,0,sw,sh);for(const s of stars){const alpha=s.a*(.65+.35*Math.sin(t*s.s+s.p));sctx.beginPath();sctx.arc(s.x,s.y,s.r,0,Math.PI*2);sctx.fillStyle=`rgba(226,216,255,${alpha})`;sctx.fill()}requestAnimationFrame(drawStars)}window.addEventListener('resize',resizeStars);resizeStars();requestAnimationFrame(drawStars);
+
+/* Universo 3D en WebGL sin dependencias: esfera central, corazón, anillos y mundos orbitales. */
+const canvas=document.getElementById('universe'),ctx=canvas.getContext('webgl',{alpha:true,antialias:true});
+let gl=ctx,program,buf,loc={};let rotX=-.22,rotY=.35,dragging=false,lastX=0,lastY=0,autoRotate=true,objects=[];
+const vs=`attribute vec3 p;attribute vec3 c;uniform mat4 proj;uniform mat4 view;uniform float pointSize;varying vec3 col;void main(){col=c;gl_Position=proj*view*vec4(p,1.0);gl_PointSize=pointSize;}`;
+const fs=`precision mediump float;varying vec3 col;uniform float alpha;void main(){vec2 q=gl_PointCoord-vec2(.5);float d=length(q);if(d>.5)discard;float glow=1.0-smoothstep(.05,.5,d);gl_FragColor=vec4(col,alpha*glow);}`;
+function shader(type,src){const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))console.warn(gl.getShaderInfoLog(sh));return sh}
+function initGL(){if(!gl)return;program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vs));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(program);gl.useProgram(program);loc.p=gl.getAttribLocation(program,'p');loc.c=gl.getAttribLocation(program,'c');loc.proj=gl.getUniformLocation(program,'proj');loc.view=gl.getUniformLocation(program,'view');loc.pointSize=gl.getUniformLocation(program,'pointSize');loc.alpha=gl.getUniformLocation(program,'alpha');gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.clearColor(0,0,0,0);buf=gl.createBuffer()}
+function matPerspective(fovy,aspect,near,far){let f=1/Math.tan(fovy/2),nf=1/(near-far);return new Float32Array([f/aspect,0,0,0,0,f,0,0,0,0,(far+near)*nf,-1,0,0,2*far*near*nf,0])}
+function matView(rx,ry){const cx=Math.cos(rx),sx=Math.sin(rx),cy=Math.cos(ry),sy=Math.sin(ry);return new Float32Array([cy,sy*sx,sy*cx,0,0,cx,-sx,0,-sy,cy*sx,cy*cx,0,0,0,-5.8,1])}
+function drawPoints(points, size, alpha=1){if(!points.length)return;const data=new Float32Array(points.length*6);points.forEach((o,i)=>{data.set([o.x,o.y,o.z,o.r,o.g,o.b],i*6)});gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,data,gl.DYNAMIC_DRAW);gl.enableVertexAttribArray(loc.p);gl.vertexAttribPointer(loc.p,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(loc.c);gl.vertexAttribPointer(loc.c,3,gl.FLOAT,false,24,12);gl.uniform1f(loc.pointSize,size);gl.uniform1f(loc.alpha,alpha);gl.drawArrays(gl.POINTS,0,points.length)}
+function spherePoints(cx,cy,cz,r,count,color,seed=1){const out=[];for(let i=0;i<count;i++){const y=1-2*(i+.5)/count,rr=Math.sqrt(1-y*y),a=i*2.399963+seed;const x=Math.cos(a)*rr,z=Math.sin(a)*rr;const shade=.65+.35*(.5+.5*Math.sin(a*3+y*8));out.push({x:cx+x*r,y:cy+y*r,z:cz+z*r,r:color[0]*shade,g:color[1]*shade,b:color[2]*shade})}return out}
+const spaceDots=Array.from({length:420},()=>({x:(Math.random()-.5)*8,y:(Math.random()-.5)*6,z:(Math.random()-.5)*4,r:.55,g:.48,b:.82}));
+function makeScene(t){let all=[...spaceDots];const center=spherePoints(0,0,0,.78,1900,[1,.34,.66],2);all.push(...center);/* luminous heart silhouette at the center */const heart=[];for(let i=0;i<620;i++){let u=Math.random()*Math.PI*2,v=Math.random();let x=16*Math.pow(Math.sin(u),3)/19;let y=(13*Math.cos(u)-5*Math.cos(2*u)-2*Math.cos(3*u)-Math.cos(4*u))/19;heart.push({x:x*(.25+.75*v),y:y*(.25+.75*v),z:(Math.random()-.5)*.12,r:1,g:.62,b:.84})}all.push(...heart);
+ const planets=[{r:1.65,size:.20,speed:.42,phase:.3,c:[.55,.42,1],n:520},{r:2.25,size:.13,speed:-.28,phase:2.1,c:[.38,.78,1],n:400},{r:2.75,size:.16,speed:.21,phase:4.4,c:[1,.58,.78],n:430},{r:3.25,size:.11,speed:-.16,phase:1.1,c:[1,.77,.49],n:350},{r:3.65,size:.14,speed:.12,phase:3.3,c:[.72,.55,1],n:380}];
+ planets.forEach((p,i)=>{const a=p.phase+t*p.speed;const x=Math.cos(a)*p.r,z=Math.sin(a)*p.r*.62,y=Math.sin(a*.7+i)*.23;all.push(...spherePoints(x,y,z,p.size,p.n,p.c,i+1));if(i===0||i===2||i===4){for(let k=0;k<150;k++){let ang=k/150*Math.PI*2;let rr=p.size*1.55;all.push({x:x+Math.cos(ang)*rr*1.6,y:y+Math.sin(ang)*rr*.45,z:z+Math.sin(ang)*rr*.8,r:p.c[0],g:p.c[1],b:p.c[2]})}}});
+ // Orbital rings as fine points, tilted to create depth.
+ for(let j=0;j<5;j++){let rad=1.65+j*.5;for(let k=0;k<320;k++){let a=k/320*Math.PI*2;all.push({x:Math.cos(a)*rad,y:Math.sin(a)*rad*.32,z:Math.sin(a)*rad*.6,r:.38+j*.055,g:.28+j*.04,b:.7+j*.04})}}
+ return all}
+let start=performance.now();function render(now){if(!gl){drawFallback();return}const dpr=Math.min(devicePixelRatio||1,2),w=canvas.clientWidth,h=canvas.clientHeight;if(canvas.width!==Math.floor(w*dpr)||canvas.height!==Math.floor(h*dpr)){canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);gl.viewport(0,0,canvas.width,canvas.height)}gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(program);gl.uniformMatrix4fv(loc.proj,false,matPerspective(Math.PI/3,canvas.width/canvas.height,.1,100));if(autoRotate&&!dragging)rotY+=(now-start)*.000012;gl.uniformMatrix4fv(loc.view,false,matView(rotX,rotY));drawPoints(makeScene((now-start)/1000),Math.max(1.2,2.1*dpr),.96);start=now;requestAnimationFrame(render)}
+function drawFallback(){canvas.style.display='none';const wrap=document.querySelector('.universe-wrap');wrap.insertAdjacentHTML('beforeend','<div style="position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb1db,#7a3f9c 28%,#161a45 55%,#080817 70%);box-shadow:0 0 100px #bc58ff55;display:grid;place-items:center;font-size:5rem;color:#ffb6df">♥</div>')}
+if(gl){initGL();requestAnimationFrame(render)}else drawFallback();
+canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});canvas.addEventListener('pointermove',e=>{if(!dragging)return;rotY+=(e.clientX-lastX)*.008;rotX=Math.max(-1.1,Math.min(1.1,rotX+(e.clientY-lastY)*.006));lastX=e.clientX;lastY=e.clientY});canvas.addEventListener('pointerup',()=>dragging=false);canvas.addEventListener('pointercancel',()=>dragging=false);canvas.addEventListener('click',()=>{if(!dragging){document.getElementById('recuerdos').scrollIntoView({behavior:'smooth'})}});
+
+/* Música: coloca tu archivo en musica/cancion.mp3. El navegador requiere un toque para iniciar audio. */
+const audio=document.getElementById('bgMusic'),musicBtn=document.getElementById('musicToggle'),musicLabel=document.getElementById('musicLabel');audio.src='musica/cancion.mp3';audio.volume=.45;
+musicBtn.addEventListener('click',async()=>{if(audio.paused){try{await audio.play();musicLabel.textContent='Pausar música';document.getElementById('musicStatus').style.display='block'}catch(e){musicLabel.textContent='Añade tu canción';alert('Coloca tu archivo MP3 en la carpeta musica y nómbralo cancion.mp3. Luego vuelve a pulsar este botón.')}}else{audio.pause();musicLabel.textContent='Activar música';document.getElementById('musicStatus').style.display='none'}});
+</script>
+</body>
+</html>
